@@ -1,6 +1,6 @@
 import {DataTypes} from 'sequelize';
 import {sequelize} from '../database/database.js';
-
+import {Ticket} from './Ticket.js'
 
 export const Event = sequelize.define("events", {
         event_cod: {
@@ -52,3 +52,9 @@ export const Event = sequelize.define("events", {
         
  
     });
+
+Event.hasMany(Ticket,{
+    foreignKey: 'event_cod',
+    source: 'event_cod'
+})
+

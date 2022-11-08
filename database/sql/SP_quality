@@ -1,0 +1,42 @@
+delimiter//
+create procedure SP_getQualities()
+begin
+	SELECT * FROM QUALITY;
+end //
+delimiter
+
+
+delimter //
+create procedure SP_getQuality(IN g_quality_cod varchar(30))
+begin
+	SELECT * FROM QUALITY WHERE quality_cod = g_quality_cod;
+end //
+delimiter
+
+
+delimier//
+create procedure SP_saveQuality(IN u_quality_cod varchar(30),
+    u_quality_type varchar(30))
+begin
+	INSERT INTO QUALITY VALUES (u_quality_cod,u_quality_type);
+end //
+delimiter
+
+delimiter //
+create procedure SP_updateQuality(IN u_quality_cod varchar(30),
+    u_quality_type varchar(30))
+begin
+	UPDATE QUALITY SET quality_type = u_quality_type WHERE quality_cod = u_quality_cod;
+end //
+delimter
+
+
+delimiter //
+create procedure SP_deleteQuality(IN d_quality_cod varchar(30))
+begin
+	DELETE FROM QUALITY WHERE quality_cod = d_quality_cod;
+end //
+delimiter
+
+
+

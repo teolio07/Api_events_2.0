@@ -1,0 +1,52 @@
+ delimiter //
+ create procedure SP_getClients()
+ begin
+   select * from CLIENT;
+ end //
+ delimiter ;
+
+
+delimiter //
+create procedure SP_getClient(IN g_client_id varchar(30))
+begin
+	SELECT * FROM CLIENT WHERE client_id = g_client_id;
+end //
+delimiter
+
+ 
+delimiter //
+create procedure SP_saveClient(IN s_client_id varchar(30),
+    s_name varchar(30) ,
+    s_address varchar(30),
+    s_phone varchar(30) )
+begin 
+	INSERT INTO CLIENT VALUES(s_client_id,s_name,s_address,s_phone);
+end //
+delimiter
+
+
+delimiter //
+create procedure SP_updateClient(IN s_client_id varchar(30),
+    s_name varchar(30) ,
+    s_address varchar(30),
+    s_phone varchar(30) )
+begin 
+	UPDATE CLIENT SET name = s_name, address = s_address, phone = s_phone WHERE client_id = s_client_id;
+end //
+delimiter
+
+
+delimiter //
+create procedure SP_deleteClient(IN d_client_id varchar(30))
+begin
+	DELETE FROM CLIENT WHERE client_id = d_client_id;
+end //
+delimiter
+
+
+
+
+
+
+
+

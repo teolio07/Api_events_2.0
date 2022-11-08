@@ -1,0 +1,46 @@
+delimiter //
+create procedure SP_getTickets()
+begin
+	SELECT * FROM TICKET;
+end //
+
+delimiter //
+create procedure SP_getTicket(IN g_ticket_cod varchar(30))
+begin
+	SELECT * FROM EVENTS WHERE ticket_cod = g_ticket_cod;
+end //
+
+delimiter //
+create procedure SP_saveTicket(IN s_ticket_cod varchar(30),
+    s_quantity float,
+    s_event_cod varchar(30),
+    s_quality_cod varchar(30),
+    s_client_id varchar(30))
+begin
+	INSERT INTO EVENTS VALUES(s_ticket_cod,
+    s_quantity,
+    s_event_cod,
+    s_quality_cod,
+    s_client_id);
+end //
+
+
+delimiter //
+create procedure SP_updateTicket(IN s_ticket_cod varchar(30),
+    s_quantity float,
+    s_event_cod varchar(30),
+    s_quality_cod varchar(30),
+    s_client_id varchar(30))
+begin
+	UPDATE TICKET SET ,
+    quantity=s_quantity,
+    event_cod=s_event_cod,
+    quality_cod=s_quality_cod,
+    client_id=s_client_id WHERE = ticket_cod=s_ticket_cod;
+end //
+
+delimiter //
+create procedure SP_deleteTicket(IN g_ticket_cod varchar(30))
+begin
+	DELETE  FROM EVENTS WHERE ticket_cod = g_ticket_cod;
+end //

@@ -1,0 +1,37 @@
+ delimiter //
+ create procedure SP_getPromoters()
+ begin
+   select * from PROMOTER;
+ end //
+ delimiter ;
+ 
+ 
+ delimiter //
+ create procedure SP_getPromoter(IN g_promoter_nit int(11))
+ begin
+ 	SELECT * FROM PROMOTER  WHERE promoter_nit = g_promoter_nit;
+ end //
+ delimiter
+ 
+ 
+ delimiter //
+ create procedure SP_savePromoter(IN i_promoter_nit int(11), i_name varchar(30),i_address varchar(30),i_phone varchar(30))
+ begin
+ 	INSERT INTO PROMOTER VALUES (i_promoter_nit, i_name,i_address,i_phone);
+ end //
+ delimiter;
+ 
+ 
+delimiter //
+create procedure SP_updatePromoter(IN u_promoter_nit int(11), u_name varchar(30),u_address varchar(30),u_phone varchar(30))
+begin
+	UPDATE PROMOTER SET name = u_name, address = u_address, phone = u_phone where promoter_nit = u_promoter_nit;
+end //
+delimiter;
+
+delimiter //
+create procedure SP_deletePromoter(IN d_promoter_nit int(11))
+begin
+	DELETE FROM PROMOTER where promoter_nit = d_promoter_nit;
+end //
+delimiter;

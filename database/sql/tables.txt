@@ -1,0 +1,50 @@
+create database db_events;
+
+use db_events;
+
+create table PROMOTER (
+    promoter_nit int primary key not null,
+    name varchar(30) not null,
+    address varchar(30) not null,
+    phone varchar(30) not null
+);
+
+
+create table CLIENT (
+    client_id varchar(30) primary key not null,
+    name varchar(30) not null,
+    address varchar(30) not null,
+    phone varchar(30) not null
+) ;
+
+create table EVENTS(
+    event_cod varchar(30) primary key not null,
+    event_name varchar(30),
+    event_date date,
+    event_time time,
+    event_address varchar(30),
+    common_price float,
+    common_quantity int,
+    vip_price float,
+    vip_quantity int,
+    publication_date date,
+    promoter_nit int,
+    foreign key(promoter_nit) references PROMOTER(promoter_nit)
+);
+
+create table QUALITY(
+    quality_cod varchar(30) primary key not null,
+    quality_type varchar(30)
+);
+
+select TICKET.ticket_cod, EVENTS.event.name, sum(TICKET.price) from TICKET INNER JOIN EVENTS ON TICKET.ticket_cod = EVENTS.event_cod WHERE TICKET.quality_cod = 'vip'
+
+create table TICKET(
+    ticket_cod varchar(30) primary key not null,
+    price float,
+    event_cod varchar(30) not null,
+    quality_cod varchar(30) not null,
+    client_id varchar(30) not null,
+    foreign key(event_cod) references EVENTS(event_cod),
+    foreign key(quality_cod) references QUALITY(quality_cod)   
+);

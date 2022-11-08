@@ -1,0 +1,56 @@
+delimiter //
+create procedure SP_getEvents()
+begin
+	SELECT * FROM EVENTS;
+end //
+
+delimiter //
+create procedure SP_getEvent(IN g_event_cod varchar(30))
+begin
+	SELECT * FROM EVENTS WHERE event_cod = g_event_cod;
+end //
+
+delimiter //
+create procedure SP_saveEvent(IN 
+    s_event_cod varchar(30), 
+    s_event_name varchar(30),
+    s_event_date date,
+    s_event_time time,
+    s_event_address varchar(30),
+    s_common_price float,
+    s_common_quantity int,
+    s_vip_price float,
+    s_vip_quantity int,
+    s_publication_date date,
+    s_promoter_nit int
+)
+begin
+	INSERT INTO EVENTS VALUES (s_event_cod,s_event_name,s_event_date,s_event_time,s_event_address,s_common_price,_common_quantity,s_vip_price,_vip_quantity,s_publication_date,s_promoter_nit);
+end //
+
+
+delimiter //
+create procedure SP_updateEvent(IN 
+    u_event_cod varchar(30), 
+    u_event_name varchar(30),
+    u_event_date date,
+    u_event_time time,
+    u_event_address varchar(30),
+    u_common_price float,
+    u_common_quantity int,
+    u_vip_price float,
+    u_vip_quantity int,
+    u_publication_date date,
+    u_promoter_nit int
+)
+begin
+	UPDATE EVENTS SET event_name =  u_event_name, event_date =  u_event_date, event_time = u_event_time , event_address  = u_event_address , common_price = u_common_price , common_quantity = u_common_quantity, vip_price = u_vip_price , vip_quantity = u_vip_quantity, publication_date = u_publication_date, promoter_nit = u_promoter_nit WHERE event_cod = u_event_cod; 
+end //
+
+
+
+delimiter //
+create procedure SP_deleteEvent(IN g_event_cod varchar(30))
+begin
+	DELETE FROM EVENTS WHERE event_cod = g_event_cod;
+end //
