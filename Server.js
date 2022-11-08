@@ -27,7 +27,7 @@ import './models/Ticket.js';
 
 /*-------------------running api---------*/
 async function main(){
-    await sequelize.sync({force: false});
+    await sequelize.sync({force: true});
     await sequelize.authenticate()
         .then(() => {
             console.log(`Connection has been established successfully`);

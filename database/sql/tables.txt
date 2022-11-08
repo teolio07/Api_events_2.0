@@ -46,5 +46,6 @@ create table TICKET(
     quality_cod varchar(30) not null,
     client_id varchar(30) not null,
     foreign key(event_cod) references EVENTS(event_cod),
-    foreign key(quality_cod) references QUALITY(quality_cod)   
+    foreign key(quality_cod) references QUALITY(quality_cod),
+    foreign key(cient_id references CLIENT(client_id),
 );

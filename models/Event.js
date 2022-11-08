@@ -52,9 +52,9 @@ export const Event = sequelize.define("events", {
         
  
     });
-
+/*
 Event.hasMany(Ticket,{
     foreignKey: 'event_cod',
     source: 'event_cod'
 })
-
+*/
