@@ -4,6 +4,7 @@ import express from 'express';
 import ClientRoutes from './ClientRoutes.js';
 import PromoterRoutes from './PromoterRoutes.js';
 import QualityRoutes from './QualityRoutes.js';
+import EventRoutes from './EventRoutes.js';
 /*-----------function router---------------*/
 function apiRouter(app){
     const router = express.Router();
@@ -11,9 +12,10 @@ function apiRouter(app){
     router.use('/client',ClientRoutes)
     router.use('/promoter',PromoterRoutes)
     router.use('/quality',QualityRoutes)
+    router.use('/event',EventRoutes)
 /*
-    router.use('/event')
     router.use('/ticket')
+
 */
 }
 
