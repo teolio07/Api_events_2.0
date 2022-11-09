@@ -46,7 +46,7 @@ export const Event = sequelize.define("events", {
             allowNull: false
         },
         promoter_nit: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false
         }
         

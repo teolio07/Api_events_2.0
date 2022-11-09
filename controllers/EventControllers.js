@@ -39,7 +39,7 @@ class EventControllers{
         eventServices.vip_quantity = vip_quantity;
         eventServices.publication_date = publication_date;
         eventServices.promoter_nit = promoter_nit;
-        const saveEvent = await eventServices.saveClient();
+        const saveEvent = await eventServices.saveEvent();
         res.json(saveEvent);
             
     }    
@@ -68,7 +68,7 @@ class EventControllers{
         eventServices.vip_quantity = vip_quantity;
         eventServices.publication_date = publication_date;
         eventServices.promoter_nit = promoter_nit;
-        const updateEvent = await eventServices.updateClient();
+        const updateEvent = await eventServices.updateEvent();
         res.json(updateEvent);
  
     }

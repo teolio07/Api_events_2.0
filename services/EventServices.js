@@ -29,7 +29,7 @@ constructor(event_cod,event_name,event_date,event_time,event_address,common_pric
         }
         catch(error){console.log('error getting event in services')}
     }
-    async saveClient(){
+    async saveEvent(){
     const event = {
         event_cod :this.event_cod,
         event_name: this.event_name,
@@ -45,6 +45,35 @@ constructor(event_cod,event_name,event_date,event_time,event_address,common_pric
         }
         const saveEvent = await Event.create(event);
         return saveEvent;
+    }
+    async updateEvent(){
+        try{
+            const event = {
+            event_cod :this.event_cod,
+            event_name: this.event_name,
+            event_date: this.event_date,
+            event_time: this.event_time,
+            event_address: this.event_address,
+            common_price: this.common_price,
+            common_quantity :this.common_quantity,
+            vip_price :this.vip_price,
+            vip_quantity : this.vip_quantity,
+            publication_date :this.publication_date,
+            promoter_nit : this.promoter_nit
+            }
+            let u_event_cod = this.event_cod;
+            const updateEvent = await Event.update(event,{where:{event_cod:u_event_cod}});
+            return updateEvent;
+        }
+        catch(error){console.log(error)}
+   }
+   async deleteEvent(){
+        try{
+            let d_event_cod = this.event_cod;
+            const deleteEvent = await Event.destroy({where: {event_cod:d_event_cod}});    
+            return deleteEvent
+        }
+        catch(error){console.log('Error deleting event in servies')}
     }
     
 }

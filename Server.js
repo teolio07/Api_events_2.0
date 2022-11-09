@@ -27,17 +27,22 @@ import './models/Ticket.js';
 
 /*-------------------running api---------*/
 async function main(){
-    await sequelize.sync({force: true});
-    await sequelize.authenticate()
-        .then(() => {
-            console.log(`Connection has been established successfully`);
-        }).catch((error) => {
-            console.error('Unable to connect to the database: ', error);
-        });
-    app.listen(port,(err)=>{
-    if(err){ console.log('error starting the server')}
-    else{console.log('Server running')}
-    })
+    try{
+        await sequelize.sync({force: false});
+        await sequelize.authenticate()
+            .then(() => {
+                console.log(`Connection has been established successfully`);
+            }).catch((error) => {
+                console.log('Unable to connect to the database: '+ error);
+            });
+            app.listen(port,(err)=>{
+                if(err){ console.log('error starting the server')}
+                else{console.log('Server running')}
+            })
+    }
+    catch(error){
+        console.log(`Error connecting to database `)
+    }
 }
 
 main();
