@@ -18,11 +18,6 @@ app.use(express.json());
 import apiRouter from './routes/index.js'
 apiRouter(app);
 /*---------------------models-------------*/
-import './models/Quality.js';
-import './models/Promoter.js';
-import './models/Client.js';
-import './models/Event.js';
-import './models/Ticket.js';
 
 
 /*-------------------running api---------*/
