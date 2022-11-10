@@ -11,7 +11,7 @@ EventRoutes.get('/get_events',eventControllers.getEvents)
 EventRoutes.post('/save_event',eventControllers.saveEvent)
 EventRoutes.patch('/update_event',eventControllers.updateEvent)
 EventRoutes.get('/get_event/:event_cod',eventControllers.getEvent)
-EventRoutes.delete('/delete_event',eventControllers.deleteEvent)
+EventRoutes.delete('/delete_event/:event_cod',eventControllers.deleteEvent)
 
 export default EventRoutes;
 

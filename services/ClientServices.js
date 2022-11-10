@@ -1,10 +1,13 @@
 import {Client} from '../models/Client.js';
 class ClientServices{
-    constructor(client_id,name,address,phone){
+    constructor(client_id,name,email,phone,image,password){
         this.client_id = client_id;
         this.name = name;
-        this.address = address;
         this.phone = phone;
+        this.email = email;
+        this.image = image;
+        this.password = password;
+    
     }
     async getClients(){
         try{
@@ -31,8 +34,12 @@ class ClientServices{
             let client = {
                 client_id : this.client_id,
                 name: this.name,
-                address: this.address,
-                phone: this.phone
+                email: this.email,
+                phone: this.phone,
+                image:this.image,
+                password: this.password
+
+
             }
             const saveClient = await Client.create(client);
             return saveClient;
@@ -46,11 +53,14 @@ class ClientServices{
         try{
             let u_client_id = this.client_id;
             let client = {
-                client_id : this.client_id,
                 name: this.name,
-                address: this.address,
-                phone: this.phone
-            }
+                email: this.email,
+                phone: this.phone,
+                image:this.image,
+                password: this.password
+
+
+                }          
             const updateClient = await Client.update(client,{where:{client_id: u_client_id}}); 
             return updateClient;
  

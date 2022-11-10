@@ -6,7 +6,7 @@ class ClientControllers {
             let clients = await clientServices.getClients(); 
             res.json(clients);
        } catch(error){
-            console.log('Promise rejection error' + error)
+            console.log(error)
             
         }
     
@@ -29,12 +29,15 @@ class ClientControllers {
 
     async saveClient(req,res){
         try{
-            const{client_id,name,address,phone } = req.body;
+            const{client_id,name,email,phone,image,password } = req.body;
             let clientServices = new ClientServices();
             clientServices.client_id = client_id;
             clientServices.name = name;
-            clientServices.address = address;
+            clientServices.email = email;
             clientServices.phone = phone;
+            clientServices.image = image;
+            clientServices.password = password;
+
             const saveClient =await clientServices.saveClient()
             res.json(saveClient); 
         } catch(error){
@@ -46,13 +49,15 @@ class ClientControllers {
 
     async  updateClient(req,res){
         try{
-            const{client_id,name,address,phone } = req.body;
+            const{client_id,name,email,phone,image,password } = req.body;
             let clientServices = new ClientServices();
             clientServices.client_id = client_id;
             clientServices.name = name;
-            clientServices.address = address;
+            clientServices.email = email;
             clientServices.phone = phone;
-            const updateClient = await clientServices.updateClient()
+            clientServices.image = image;
+            clientServices.password = password;
+           const updateClient = await clientServices.updateClient()
             res.json(updateClient);
        } catch(error){
             console.log('Promise rejection error' + error);

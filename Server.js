@@ -18,12 +18,12 @@ app.use(express.json());
 import apiRouter from './routes/index.js'
 apiRouter(app);
 /*---------------------models-------------*/
-
+import './models/Client.js'
 
 /*-------------------running api---------*/
 async function main(){
     try{
-        await sequelize.sync({force: false});
+        await sequelize.sync({force: true});
         await sequelize.authenticate()
             .then(() => {
                 console.log(`Connection has been established successfully`);

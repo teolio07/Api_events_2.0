@@ -26,7 +26,7 @@ class PromoterControllers{
         catch(error){console.log('error getting promoters in controllers')}
     }
     async savePromoter(req,res){
-        const {promoter_nit,name,address,phone} = req.body;
+        const {promoter_nit,name,address,phone,email,password} = req.body;
 
         const promoterServices = new PromoterServices();
 
@@ -43,7 +43,7 @@ class PromoterControllers{
     } 
     async updatePromoter(req,res){
         try{
-            const {promoter_nit,name,address,phone} = req.body;
+            const {promoter_nit,name,address,phone,email,password} = req.body;
 
             const promoterServices = new PromoterServices();
 
