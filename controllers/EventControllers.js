@@ -20,10 +20,6 @@ class EventControllers{
         event_date,
         event_time,
         event_address,
-        common_price,
-        common_quantity,
-        vip_price,
-        vip_quantity,
         publication_date,
         promoter_nit
  } = req.body;
@@ -33,10 +29,6 @@ class EventControllers{
         eventServices.event_date = event_date; 
         eventServices.event_time = event_time; 
         eventServices.event_address = event_address; 
-        eventServices.common_price = common_price; 
-        eventServices.common_quantity = common_quantity; 
-        eventServices.vip_price = vip_price; 
-        eventServices.vip_quantity = vip_quantity;
         eventServices.publication_date = publication_date;
         eventServices.promoter_nit = promoter_nit;
         const saveEvent = await eventServices.saveEvent();
@@ -49,10 +41,6 @@ class EventControllers{
         event_date,
         event_time,
         event_address,
-        common_price,
-        common_quantity,
-        vip_price,
-        vip_quantity,
         publication_date,
         promoter_nit
  } = req.body;
@@ -62,10 +50,6 @@ class EventControllers{
         eventServices.event_date = event_date; 
         eventServices.event_time = event_time; 
         eventServices.event_address = event_address; 
-        eventServices.common_price = common_price; 
-        eventServices.common_quantity = common_quantity; 
-        eventServices.vip_price = vip_price; 
-        eventServices.vip_quantity = vip_quantity;
         eventServices.publication_date = publication_date;
         eventServices.promoter_nit = promoter_nit;
         const updateEvent = await eventServices.updateEvent();

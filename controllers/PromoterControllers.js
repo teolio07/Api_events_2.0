@@ -26,7 +26,7 @@ class PromoterControllers{
         catch(error){console.log('error getting promoters in controllers')}
     }
     async savePromoter(req,res){
-        const {promoter_nit,name,address,phone,email,password} = req.body;
+        const {promoter_nit,name,address,phone,email,password,information,facebook,instagram,twitter} = req.body;
 
         const promoterServices = new PromoterServices();
 
@@ -34,7 +34,12 @@ class PromoterControllers{
         promoterServices.name = name;
         promoterServices.address = address;
         promoterServices.phone = phone;
-
+        promoterServices.email = email;
+        promoterServices.password = password;
+        promoterServices.information = information;
+        promoterServices.facebook = facebook;
+        promoterServices.instagram = instagram;
+        promoterServices.twitter = twitter;
         const savePromoter = await promoterServices.savePromoter();
 
         res.json(savePromoter);
@@ -43,7 +48,7 @@ class PromoterControllers{
     } 
     async updatePromoter(req,res){
         try{
-            const {promoter_nit,name,address,phone,email,password} = req.body;
+            const {promoter_nit,name,address,phone,email,password,information,facebook,instagram,twitter} = req.body;
 
             const promoterServices = new PromoterServices();
 
@@ -51,6 +56,12 @@ class PromoterControllers{
             promoterServices.name = name;
             promoterServices.address = address;
             promoterServices.phone = phone;
+            promoterServices.email = email;
+            promoterServices.password = password;
+            promoterServices.information = information;
+            promoterServices.facebook = facebook;
+            promoterServices.instagram = instagram;
+            promoterServices.twitter = twitter;
             const updatePromoter = await promoterServices.updatePromoter();
 
             res.json(updatePromoter);
@@ -69,7 +80,7 @@ class PromoterControllers{
 
             const deletePromoter = promoterServices.deletePromoter();
 
-            return deletePromoter;
+            res.json(deletePromoter);
         }
         catch(error){console.log('error deleting promoter in controller')}
     }

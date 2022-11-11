@@ -1,8 +1,7 @@
 import {Ticket} from '../models/Ticket.js';
 class TicketServices{
-    constructor(ticket_cod,price,event_cod,quality_cod,client_id){
+    constructor(ticket_cod,event_cod,quality_cod,client_id){
         this.ticket_cod = ticket_cod;
-        this.price = price;
         this.event_cod = event_cod;
         this.quality_cod = quality_cod;
         this.client_id = client_id;
@@ -31,7 +30,6 @@ class TicketServices{
         try{
             const ticket = {
                             ticket_cod:this.ticket_cod,
-                            price: this.price,
                             event_cod:this.event_cod,
                             quality_cod: this.quality_cod,
                             client_id:this.client_id
@@ -48,7 +46,6 @@ class TicketServices{
         try{
             const ticket = {
                             ticket_cod:this.ticket_cod,
-                            price: this.price,
                             event_cod:this.event_cod,
                             quality_cod: this.quality_cod,
                             client_id:this.client_id

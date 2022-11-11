@@ -7,10 +7,6 @@ constructor(event_cod,event_name,event_date,event_time,event_address,common_pric
         this.event_date = event_date;
         this.event_time = event_time;
         this.event_address = event_address;
-        this.common_price = common_price;
-        this.common_quantity = common_quantity;
-        this.vip_price = vip_price;
-        this.vip_quantity = vip_quantity;
         this.publication_date = publication_date;
         this.promoter_nit = promoter_nit;
     }
@@ -36,10 +32,6 @@ constructor(event_cod,event_name,event_date,event_time,event_address,common_pric
         event_date: this.event_date,
         event_time: this.event_time,
         event_address: this.event_address,
-        common_price: this.common_price,
-        common_quantity :this.common_quantity,
-        vip_price :this.vip_price,
-        vip_quantity : this.vip_quantity,
         publication_date :this.publication_date,
         promoter_nit : this.promoter_nit
         }
@@ -54,10 +46,6 @@ constructor(event_cod,event_name,event_date,event_time,event_address,common_pric
             event_date: this.event_date,
             event_time: this.event_time,
             event_address: this.event_address,
-            common_price: this.common_price,
-            common_quantity :this.common_quantity,
-            vip_price :this.vip_price,
-            vip_quantity : this.vip_quantity,
             publication_date :this.publication_date,
             promoter_nit : this.promoter_nit
             }

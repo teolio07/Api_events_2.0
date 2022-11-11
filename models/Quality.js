@@ -10,5 +10,13 @@ import {sequelize} from '../database/database.js';
     quality_type: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    price: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+    },    
+    event_cod: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 });

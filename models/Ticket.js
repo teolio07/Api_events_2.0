@@ -7,11 +7,6 @@ export const Ticket = sequelize.define("tickets",{
                 type: DataTypes.STRING,
                 allowNull: false 
             },
-    price: {
-                type: DataTypes.FLOAT,
-                allowNull: false 
-            },
- 
     quality_cod: {
                 type: DataTypes.STRING,
                 allowNull: false 
@@ -19,7 +14,11 @@ export const Ticket = sequelize.define("tickets",{
     client_id: {
                 type: DataTypes.STRING,
                 allowNull: false 
-            }
+            },
+     event_cod: {
+        type: DataTypes.STRING,
+        allowNull: false 
+    },        
 
 }) 
 

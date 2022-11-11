@@ -1,11 +1,18 @@
 import {Promoter} from '../models/Promoter.js';
 class PromoterServices{
 
-    constructor(promoter_nit,name,address,phone){
+    constructor(promoter_nit,name,address,phone,email,password,information,facebook,instagram,twitter){
         this.promoter_nit = promoter_nit;
         this.name = name;
         this.address = address;
         this.phone = phone;
+        this.email = email;
+        this.password = password;
+        this.information = information;
+        this.facebook = facebook;
+        this.instagram = instagram;
+        this.twitter = twitter;
+
     }
     async getPromoters(){
         try{
@@ -25,7 +32,16 @@ class PromoterServices{
     }
     async savePromoter(){
          try{
-            let promoter = {promoter_nit: this.promoter_nit,name:this.name,address:this.address,phone:this.phone} 
+            let promoter = {promoter_nit: this.promoter_nit,
+                name:this.name,
+                address:this.address,
+                phone:this.phone,
+                email: this.email,
+                password:this.password,
+                information: this.information,
+                facebook:this.facebook,
+                instagram:this.instagram,
+                twitter:this.twitter} 
             const savePromoter = await Promoter.create(promoter); 
             return savePromoter; 
         }
@@ -37,7 +53,16 @@ class PromoterServices{
     async updatePromoter(){
         try{
             let u_promoter_id = this.promoter_nit;
-            let promoter = {name:this.name,address:this.address,phone:this.phone} 
+            let promoter = {promoter_nit: this.promoter_nit,
+                name:this.name,
+                address:this.address,
+                phone:this.phone,
+                email: this.email,
+                password:this.password,
+                information: this.information,
+                facebook:this.facebook,
+                instagram:this.instagram,
+                twitter:this.twitter} 
             const updatePromoter = await Promoter.update(promoter,{where: {promoter_nit: u_promoter_id}}) 
             return updatePromoter; 
         }
@@ -48,10 +73,10 @@ class PromoterServices{
      async deletePromoter(){
         try{
             let d_promoter_nit = this.promoter_nit;
-            const deletePromoter = await Promoter.destroy({where: {promoters_nit:d_promoter_nit}});
+            const deletePromoter = await Promoter.destroy({where: {promoter_nit:d_promoter_nit}});
             return deletePromoter;
         }
-        catch(error){console.log('Error getting promoters')}
+        catch(error){console.log('Error deleting promoter')}
     }
    
 }

@@ -25,22 +25,6 @@ export const Event = sequelize.define("events", {
             type: DataTypes.STRING,
             allowNull: false
         },
-        common_price: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        common_quantity: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        vip_price: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        vip_quantity: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
         publication_date: {
             type: DataTypes.DATE,
             allowNull: false

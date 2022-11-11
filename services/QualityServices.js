@@ -1,8 +1,10 @@
 import {Quality} from '../models/Quality.js';
 class QualityServices{
-    constructor(quality_cod,quality_type){
+    constructor(quality_cod,quality_type,event_cod,price){
         this.quality_cod = quality_cod;
         this.quality_type = quality_type;
+        this.event_cod = event_cod;
+        this.price = price
     }
     async getQualities(){
         try{
@@ -21,7 +23,7 @@ class QualityServices{
     }
     async saveQuality(){
         try{
-            const quality = {quality_cod:this.quality_cod,quality_type:this.quality_type}
+            const quality = {quality_cod:this.quality_cod,quality_type:this.quality_type,event_cod:this.event_cod,price:this.price}
             const saveQuality = await Quality.create(quality);
             return saveQuality
         }
@@ -32,7 +34,7 @@ class QualityServices{
     async updateQuality(){
         try{
             let u_quality_cod = this.quality_cod
-            const quality = {quality_type:this.quality_type}
+            const quality = {quality_cod:this.quality_cod,quality_type:this.quality_type,event_cod:this.event_cod,price:this.price}
             const updateQuality = await Quality.update(quality,{where:{quality_cod:u_quality_cod}});
             return updateQuality       
         }

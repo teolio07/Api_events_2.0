@@ -33,11 +33,11 @@ export const Promoter =  sequelize.define("promoters", {
         },
         facebook: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         instagram: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
 
 
