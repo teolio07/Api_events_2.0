@@ -39,6 +39,10 @@ export const Promoter =  sequelize.define("promoters", {
             type: DataTypes.STRING,
             allowNull: true
         },
+        twitter: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
 
 
 

@@ -25,7 +25,7 @@ class QualityControllers {
     }
     async saveQuality(req,res){
         try{
-            const {quality_cod,quality_type,event_cod} = req.body;
+            const {quality_cod,quality_type,price,event_cod} = req.body;
             const qualityServices = new QualityServices();
             qualityServices.quality_cod = quality_cod;
             qualityServices.quality_type = quality_type;
@@ -40,7 +40,7 @@ class QualityControllers {
     }
     async updateQuality(req,res){
         try{
-            const {quality_cod,quality_type,event_cod} = req.body;
+            const {quality_cod,quality_type,event_cod,price} = req.body;
             const qualityServices = new QualityServices();
             qualityServices.quality_cod = quality_cod;
             qualityServices.quality_type = quality_type;

@@ -17,6 +17,7 @@ class ClientServices{
         }
         catch(error){console.log('Error in services getting clients')}
     }
+    
 
     async getClient(){
         try{
