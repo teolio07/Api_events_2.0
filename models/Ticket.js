@@ -3,7 +3,7 @@ import {sequelize} from "../database/database.js";
 
 export const Ticket = sequelize.define("tickets",{
     ticket_cod: {
-                primarykey: true,
+                primaryKey: true,
                 type: DataTypes.STRING,
                 allowNull: false 
             },

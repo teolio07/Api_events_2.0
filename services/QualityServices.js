@@ -11,7 +11,7 @@ class QualityServices{
             const qualities = await Quality.findAll() 
             return qualities; 
         }
-        catch(error){cosole.log('error getting qualities in services')}
+        catch(error){cosole.log('error getting qualities in services '+error.message)}
     }
     async getQuality(){
         try{
@@ -19,7 +19,7 @@ class QualityServices{
             const quality = await Quality.findOne({where:{quality_cod:g_quality_cod}});
             return quality;
         }
-        catch(error){console.log('error getting quality in services')}
+        catch(error){console.log('error getting quality in services ' +error.message)}
     }
     async saveQuality(){
         try{
@@ -28,7 +28,7 @@ class QualityServices{
             return saveQuality
         }
         catch(error){
-            console.log('error saving quality in servicesj')
+            console.log('error saving quality in servicesj'+error.message)
         }
     }
     async updateQuality(){
@@ -39,7 +39,7 @@ class QualityServices{
             return updateQuality       
         }
         catch(error){
-            console.log('error updating quality in services')
+            console.log('error updating quality in services '+error.message)
         }
     }
     async deleteQuality(){
@@ -49,7 +49,7 @@ class QualityServices{
             return quality;
         }
         catch(error){
-            console.log('error deleting quality in services');
+            console.log('error deleting quality in services '+error.message);
         }
 
     }

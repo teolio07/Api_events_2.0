@@ -1,13 +1,14 @@
 import {Event} from '../models/Event.js';
 
 class EventServices{
-constructor(event_cod,event_name,event_date,event_time,event_address,common_price,common_quantity,vip_price,vip_quantity,publication_date,promoter_nit){
+constructor(event_cod,event_name,event_date,event_time,event_address,publication_date,description,promoter_nit){
         this.event_cod = event_cod;
         this.event_name = event_name;
         this.event_date = event_date;
         this.event_time = event_time;
         this.event_address = event_address;
         this.publication_date = publication_date;
+        this.description = description;
         this.promoter_nit = promoter_nit;
     }
     async getEvents(){
@@ -15,7 +16,7 @@ constructor(event_cod,event_name,event_date,event_time,event_address,common_pric
             const clients = await Event.findAll(); 
             return clients
         }
-        catch(error){console.log('error getting events in services')}
+        catch(error){console.log('error getting events in services '+error.message)}
     }
     async getEvent(){
         try{
@@ -23,7 +24,7 @@ constructor(event_cod,event_name,event_date,event_time,event_address,common_pric
             const clients = await Event.findOne({where: {event_cod: g_event_cod}}); 
             return clients
         }
-        catch(error){console.log('error getting event in services')}
+        catch(error){console.log('error getting event in services '+error.message)}
     }
     async saveEvent(){
     const event = {
@@ -33,6 +34,7 @@ constructor(event_cod,event_name,event_date,event_time,event_address,common_pric
         event_time: this.event_time,
         event_address: this.event_address,
         publication_date :this.publication_date,
+        description: this.description,
         promoter_nit : this.promoter_nit
         }
         const saveEvent = await Event.create(event);
@@ -47,13 +49,14 @@ constructor(event_cod,event_name,event_date,event_time,event_address,common_pric
             event_time: this.event_time,
             event_address: this.event_address,
             publication_date :this.publication_date,
+            description: this.description,
             promoter_nit : this.promoter_nit
             }
             let u_event_cod = this.event_cod;
             const updateEvent = await Event.update(event,{where:{event_cod:u_event_cod}});
             return updateEvent;
         }
-        catch(error){console.log(error)}
+        catch(error){console.log('Error updating event in servies '+error.message)}
    }
    async deleteEvent(){
         try{
@@ -61,7 +64,7 @@ constructor(event_cod,event_name,event_date,event_time,event_address,common_pric
             const deleteEvent = await Event.destroy({where: {event_cod:d_event_cod}});    
             return deleteEvent
         }
-        catch(error){console.log('Error deleting event in servies')}
+        catch(error){console.log('Error deleting event in servies '+error.message)}
     }
     
 }

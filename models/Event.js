@@ -6,7 +6,7 @@ export const Event = sequelize.define("events", {
         event_cod: {
             type: DataTypes.STRING,
             allowNull: false,
-            primarykey: true,
+            primaryKey: true
 
         },
         event_name: {
@@ -27,6 +27,10 @@ export const Event = sequelize.define("events", {
         },
         publication_date: {
             type: DataTypes.DATE,
+            allowNull: false
+        },
+        description: {
+            type: DataTypes.STRING,
             allowNull: false
         },
         promoter_nit: {

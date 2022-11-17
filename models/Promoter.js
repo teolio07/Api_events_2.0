@@ -4,7 +4,7 @@ export const Promoter =  sequelize.define("promoters", {
             promoter_nit: {
             type: DataTypes.STRING,
             allowNull: false,
-            primarykey: true,
+            primaryKey: true,
 
         },
         name: {

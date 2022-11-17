@@ -18,7 +18,7 @@ app.use(express.json());
 import apiRouter from './routes/index.js'
 apiRouter(app);
 /*---------------------models-------------*/
-import './models/Client.js'
+import './models/Index.js'
 
 /*-------------------running api---------*/
 async function main(){
@@ -36,7 +36,7 @@ async function main(){
             })
     }
     catch(error){
-        console.log(`Error connecting to database `)
+        console.log('Error connecting to database'+ error.message)
     }
 }
 

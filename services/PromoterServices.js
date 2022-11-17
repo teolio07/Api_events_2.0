@@ -19,7 +19,7 @@ class PromoterServices{
             const getPromoters = await Promoter.findAll();
             return getPromoters;
         }
-        catch(error){console.log(error)}
+        catch(error){console.log('Error in services getting promoters ' +error.message)}
     }
     async getPromoter(){
         try{
@@ -28,7 +28,7 @@ class PromoterServices{
             const getPromoter = await Promoter.findOne({where: {promoter_nit:g_promoter_nit}});
             return getPromoter;
         }
-        catch(error){console.log(error)}
+        catch(error){console.log('Error in services getting promoter ' +error.message)}
     }
     async savePromoter(){
          try{
@@ -46,7 +46,7 @@ class PromoterServices{
             return savePromoter; 
         }
         catch(error){
-            console.log('error saving promoter in services');
+            console.log('error saving promoter in services '+error.message);
         }       
     }
 
@@ -67,7 +67,7 @@ class PromoterServices{
             return updatePromoter; 
         }
         catch(error){
-            console.log('error updating promoter in services');
+            console.log('error updating promoter in services '+error.message);
         }
     }
      async deletePromoter(){
@@ -76,7 +76,7 @@ class PromoterServices{
             const deletePromoter = await Promoter.destroy({where: {promoter_nit:d_promoter_nit}});
             return deletePromoter;
         }
-        catch(error){console.log('Error deleting promoter')}
+        catch(error){console.log('Error deleting promoter in services '+error.message)}
     }
    
 }

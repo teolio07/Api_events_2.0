@@ -6,7 +6,7 @@ export const Client = sequelize.define("clients", {
         client_id: {
             type: DataTypes.STRING,
             allowNull: false,
-            primarykey: true,
+            primaryKey: true,
 
         },
         name: {
