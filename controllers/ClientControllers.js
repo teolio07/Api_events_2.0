@@ -1,5 +1,49 @@
+import Joi from 'joi'
+
 import ClientServices from '../services/ClientServices.js';
+
+
+const schemaUpdateClient = Joi.object({
+    client_id: Joi.string().min(1).max(255).required(),    
+    name: Joi.string().min(1).max(255).required(),
+    phone: Joi.string().min(1).max(255).required(),
+    email: Joi.string().min(1).max(255).required().email(),
+    image: Joi.string().min(1).max(255).required(),
+    password: Joi.string().min(1).max(255).required()
+
+})
+
+const schemaSaveClient = Joi.object({
+    client_id: Joi.string().min(1).max(255).required(),    
+    name: Joi.string().min(1).max(255).required(),
+    phone: Joi.string().min(1).max(255).required(),
+    email: Joi.string().min(1).max(255).required().email(),
+    image: Joi.string().min(1).max(255).required(),
+    password: Joi.string().min(1).max(255).required()
+
+})
+
+const schemaDeleteClient = Joi.object({
+     client_id: Joi.string().min(1).max(255).required(),    
+
+})
+
+
+
+const schemaGetClient = Joi.object({
+     client_id: Joi.string().min(1).max(255).required(),    
+
+})
+
+const schemaLoginUser = Joi.object({
+    email: Joi.string().min(1).max(255).required().email(),
+    password: Joi.string().min(1).max(255).required()
+   
+   
+})
+
 class ClientControllers {
+    
     async getClients(req,res){
         try{
             const clientServices = new ClientServices();
@@ -11,7 +55,13 @@ class ClientControllers {
         }
     
     }
-   async getClient(req,res){
+    async getClient(req,res){
+        const {error} = schemaGetClient.validate(req.params);
+        if(error){
+            return res.status(400).json(
+                {error: error.details[0].message}
+            )   
+        }
         try{
             const{client_id } = req.params;
 
@@ -28,6 +78,12 @@ class ClientControllers {
     }
 
     async saveClient(req,res){
+        const {error} = schemaSaveClient.validate(req.body)
+        if(error){
+            return res.status(400).json(
+                {error: error.details[0].message}
+            )
+        }
         try{
             const{client_id,name,email,phone,image,password } = req.body;
             let clientServices = new ClientServices();
@@ -48,6 +104,12 @@ class ClientControllers {
     }
 
     async  updateClient(req,res){
+        const {error} = schemaUpdateClient.validate(req.body) 
+        if(error){
+             return res.status(400).json(
+                {error: error.details[0].message}
+            )
+        }
         try{
             const{client_id,name,email,phone,image,password } = req.body;
             let clientServices = new ClientServices();
@@ -66,6 +128,13 @@ class ClientControllers {
     
     }
    async deleteClient(req,res){
+        const { error } = schemaDeleteClient.validate(req.params);
+        if(error){
+            return res.status(400).json(
+                {error: error.details[0].message}
+            )
+
+        }
         try{
             const {client_id } = req.params;
             const clientServices = new ClientServices();
@@ -78,6 +147,19 @@ class ClientControllers {
             
         }
     
+    }
+
+    async LoginUser(req,res){
+        try{
+            const {email,password} = req.body;
+            let clientServices = new ClientServices();
+            clientServices.email = email;
+            clientServices.password = password;
+            let loginUser = await clientServices.loginUser(); 
+            res.json(loginUser);
+        }
+        catch(error){console.log({message:'error login user in controller',
+                            error: error.message})}
     }
 }
 

@@ -1,4 +1,6 @@
 import {Promoter} from '../models/Promoter.js';
+import Encrypt from './Encrypt.js';
+
 class PromoterServices{
 
     constructor(promoter_nit,name,address,phone,email,password,information,facebook,instagram,twitter){
@@ -37,7 +39,7 @@ class PromoterServices{
                 address:this.address,
                 phone:this.phone,
                 email: this.email,
-                password:this.password,
+                password: await Encrypt(this.password),
                 information: this.information,
                 facebook:this.facebook,
                 instagram:this.instagram,

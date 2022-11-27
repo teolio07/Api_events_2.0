@@ -1,4 +1,6 @@
 import {Quality} from '../models/Quality.js';
+import { v4 as uuid } from 'uuid';
+
 class QualityServices{
     constructor(quality_cod,quality_type,event_cod,price){
         this.quality_cod = quality_cod;
@@ -23,7 +25,7 @@ class QualityServices{
     }
     async saveQuality(){
         try{
-            const quality = {quality_cod:this.quality_cod,quality_type:this.quality_type,event_cod:this.event_cod,price:this.price}
+            const quality = {quality_cod:uuid(),quality_type:this.quality_type,event_cod:this.event_cod,price:this.price}
             const saveQuality = await Quality.create(quality);
             return saveQuality
         }

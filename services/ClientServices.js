@@ -1,4 +1,7 @@
 import {Client} from '../models/Client.js';
+import Encrypt from './Encrypt.js';
+import boom from '@hapi/boom'; 
+
 class ClientServices{
     constructor(client_id,name,email,phone,image,password){
         this.client_id = client_id;
@@ -7,7 +10,6 @@ class ClientServices{
         this.email = email;
         this.image = image;
         this.password = password;
-    
     }
     async getClients(){
         try{
@@ -38,7 +40,7 @@ class ClientServices{
                 email: this.email,
                 phone: this.phone,
                 image:this.image,
-                password: this.password
+                password: await Encrypt(this.password)
 
 
             }
@@ -77,6 +79,19 @@ class ClientServices{
             const deleteClient = await Client.destroy({where: {client_id: d_client_id}}) 
             return deleteClient;
         }catch(error){console.log('error deleting client in services')}
+    }
+
+    async loginUser(){
+        try{
+            let user = {email: this.email,password:this.password}
+            let client = await Client.findOne({where:{email :user.email}})     
+            console.log(client)
+            return await client;
+            
+        } 
+        catch(error){console.log({messsage:'Error login user in services',
+                            error: error.message
+        })}
     }
 
 }

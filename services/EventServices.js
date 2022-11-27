@@ -1,4 +1,5 @@
 import {Event} from '../models/Event.js';
+import { v4 as uuid } from 'uuid';
 
 class EventServices{
 constructor(event_cod,event_name,event_date,event_time,event_address,publication_date,description,promoter_nit){
@@ -28,7 +29,7 @@ constructor(event_cod,event_name,event_date,event_time,event_address,publication
     }
     async saveEvent(){
     const event = {
-        event_cod :this.event_cod,
+        event_cod: uuid(),
         event_name: this.event_name,
         event_date: this.event_date,
         event_time: this.event_time,

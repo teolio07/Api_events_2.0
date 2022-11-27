@@ -45,7 +45,5 @@ export const Promoter =  sequelize.define("promoters", {
         },
 
 
-
-
     });
 

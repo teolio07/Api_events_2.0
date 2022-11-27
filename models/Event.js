@@ -5,8 +5,8 @@ import {Ticket} from './Ticket.js'
 export const Event = sequelize.define("events", {
         event_cod: {
             type: DataTypes.STRING,
-            allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            allowNull: false
 
         },
         event_name: {

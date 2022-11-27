@@ -1,4 +1,6 @@
 import {Ticket} from '../models/Ticket.js';
+import { v4 as uuid } from 'uuid';
+
 class TicketServices{
     constructor(ticket_cod,event_cod,quality_cod,client_id){
         this.ticket_cod = ticket_cod;
@@ -29,7 +31,7 @@ class TicketServices{
     async saveTicket(){
         try{
             const ticket = {
-                            ticket_cod:this.ticket_cod,
+                            ticket_cod:uuid(),
                             event_cod:this.event_cod,
                             quality_cod: this.quality_cod,
                             client_id:this.client_id

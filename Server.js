@@ -9,7 +9,7 @@ dotenv.config();
 import {sequelize} from './database/database.js';
 
 /*----------------port-------------------*/
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3007;
 
 /*--------------Middlewares----------*/
 app.use(express.json());
@@ -23,7 +23,7 @@ import './models/Index.js'
 /*-------------------running api---------*/
 async function main(){
     try{
-        await sequelize.sync({force: true});
+        await sequelize.sync({force: false});
         await sequelize.authenticate()
             .then(() => {
                 console.log(`Connection has been established successfully`);

@@ -1,4 +1,29 @@
 import TicketServices from '../services/TickerServices.js';
+import Joi from 'joi';
+
+const schemaGetTicket = Joi.object({
+    ticket_cod: Joi.string().min(1).max(255).required(),    
+})
+
+const schemaSaveTicket = Joi.object({
+    quality_cod: Joi.string().min(1).max(255).required(),    
+    client_id: Joi.string().min(1).max(255).required(),    
+    event_cod: Joi.string().min(1).max(255).required(),    
+
+})
+
+const schemaUpdateTicket = Joi.object({
+    ticket_cod: Joi.string().min(1).max(255).required(),    
+    quality_cod: Joi.string().min(1).max(255).required(),    
+    client_id: Joi.string().min(1).max(255).required(),    
+    event_cod: Joi.string().min(1).max(255).required(),    
+
+})
+
+const schemaDeleteTicket = Joi.object({
+    ticket_cod: Joi.string().min(1).max(255).required(),    
+})
+
 
 class TicketControllers{
    async getTickets(req,res){
@@ -12,6 +37,13 @@ class TicketControllers{
         }
     }
    async  getTicket(req,res){
+        const {error} = schemaGetTicket.validate(req.params);
+        if(error){
+            return res.status(400).json(
+                {error: error.details[0].message}
+            )   
+        }
+
         try{
             const {ticket_cod} = req.params;
             const ticketServices = new TicketServices();
@@ -24,10 +56,17 @@ class TicketControllers{
         }   
     }
    async  saveTicket(req,res){
+        const {error} = schemaSaveTicket.validate(req.body);
+        if(error){
+            return res.status(400).json(
+                {error: error.details[0].message}
+            )   
+        }
+
+
         try{
-            const {ticket_cod,price,event_cod,quality_cod,client_id} = req.body; 
+            const {price,event_cod,quality_cod,client_id} = req.body; 
             const ticketServices = new TicketServices();
-            ticketServices.ticket_cod = ticket_cod;
             ticketServices.price = price;
             ticketServices.event_cod = event_cod;
             ticketServices.quality_cod = quality_cod;
@@ -40,6 +79,13 @@ class TicketControllers{
         }  
     }
    async  updateTicket(req,res){
+        const {error} = schemaUpdateTicket.validate(req.body);
+        if(error){
+            return res.status(400).json(
+                {error: error.details[0].message}
+            )   
+        }
+
         try{
             const {ticket_cod,price,event_cod,quality_cod,client_id} = req.body; 
             const ticketServices = new TicketServices();
@@ -56,6 +102,13 @@ class TicketControllers{
         } 
     }
    async  deleteTicket(req,res){
+        const {error} = schemaDeleteTicket.validate(req.params);
+        if(error){
+            return res.status(400).json(
+                {error: error.details[0].message}
+            )   
+        }
+
         try{
             const {ticket_cod} = req.params;
             const ticketServices = new TicketServices();
