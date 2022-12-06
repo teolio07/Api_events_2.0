@@ -1,5 +1,6 @@
 import {Client} from '../models/Client.js';
 import Encrypt from './Encrypt.js';
+import { Login } from './Login.js';
 import boom from '@hapi/boom'; 
 
 class ClientServices{
@@ -83,15 +84,15 @@ class ClientServices{
 
     async loginUser(){
         try{
-            let user = {email: this.email,password:this.password}
-            let client = await Client.findOne({where:{email :user.email}})     
-            console.log(client)
-            return await client;
-            
+            let user = {email: this.email, password: this.password,user_type: "client"}
+            let client = await Login(user);    
+
+            return client;
         } 
-        catch(error){console.log({messsage:'Error login user in services',
+        catch(error){console.log({messsage:'Error login user  client in services',
                             error: error.message
         })}
+
     }
 
 }

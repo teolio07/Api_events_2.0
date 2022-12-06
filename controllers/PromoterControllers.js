@@ -142,8 +142,6 @@ class PromoterControllers{
                 {error: error.details[0].message}
             )  
         }
- 
-
 
         try{
             const {promoter_nit} = req.params 
@@ -158,6 +156,19 @@ class PromoterControllers{
         }
         catch(error){console.log('error deleting promoter in controller')}
     }
+    async LoginUser(req,res){
+        try{
+            const {email,password} = req.body;
+            let clientServices = new ClientServices();
+            clientServices.email = email;
+            clientServices.password = password;
+            let loginUser = await clientServices.loginUser(); 
+            res.json(loginUser);
+        }
+        catch(error){console.log({message:'error login user in controller',
+                            error: error.message})}
+    }
+
 }
 
 export default PromoterControllers;

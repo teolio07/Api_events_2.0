@@ -1,5 +1,6 @@
 import {Promoter} from '../models/Promoter.js';
 import Encrypt from './Encrypt.js';
+import { Login } from './Login.js';
 
 class PromoterServices{
 
@@ -30,8 +31,7 @@ class PromoterServices{
             const getPromoter = await Promoter.findOne({where: {promoter_nit:g_promoter_nit}});
             return getPromoter;
         }
-        catch(error){console.log('Error in services getting promoter ' +error.message)}
-    }
+        catch(error){console.log('Error in services getting promoter ' +error.message)} }
     async savePromoter(){
          try{
             let promoter = {promoter_nit: this.promoter_nit,
@@ -79,6 +79,18 @@ class PromoterServices{
             return deletePromoter;
         }
         catch(error){console.log('Error deleting promoter in services '+error.message)}
+    }
+    async loginUser(){
+        try{
+            let user = {email: this.email, password: this.password,user_type: "promoter"}
+            let client = await Login(user);    
+
+            return client;
+        } 
+        catch(error){console.log({messsage:'Error login user promoter in services',
+                            error: error.message
+        })}
+
     }
    
 }
