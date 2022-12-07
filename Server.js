@@ -23,7 +23,7 @@ import './models/Index.js'
 /*-------------------running api---------*/
 async function main(){
     try{
-        await sequelize.sync({force: false});
+        await sequelize.sync({force: true});
         await sequelize.authenticate()
             .then(() => {
                 console.log(`Connection has been established successfully`);

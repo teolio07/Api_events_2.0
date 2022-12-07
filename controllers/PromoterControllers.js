@@ -159,13 +159,13 @@ class PromoterControllers{
     async LoginUser(req,res){
         try{
             const {email,password} = req.body;
-            let clientServices = new ClientServices();
-            clientServices.email = email;
-            clientServices.password = password;
-            let loginUser = await clientServices.loginUser(); 
+            let promoterServices = new PromoterServices();
+            promoterServices.email = email;
+            promoterServices.password = password;
+            let loginUser = await promoterServices.loginUser(); 
             res.json(loginUser);
         }
-        catch(error){console.log({message:'error login user in controller',
+        catch(error){console.log({message:'error login user promoter in controller',
                             error: error.message})}
     }
 

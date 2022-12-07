@@ -1,4 +1,4 @@
-import {Ticket} from '../models/Ticket.js';
+import {Calidad_Ticket} from '../models/Calidad_Ticket.js';
 import { v4 as uuid } from 'uuid';
 
 class TicketServices{
@@ -11,7 +11,7 @@ class TicketServices{
 
     async getTickets(){
         try{
-            const tickets = await Ticket.findAll();
+            const tickets = await Calidad_Ticket.findAll();
             return tickets;
         }
         catch(error){
@@ -21,7 +21,7 @@ class TicketServices{
     async getTicket(){
         try{
             let g_ticket_cod = this.ticket_cod;
-            const ticket = Ticket.findOne({where:{ticket_cod: g_ticket_cod}});
+            const ticket = Calidad_Ticket.findOne({where:{ticket_cod: g_ticket_cod}});
             return ticket;
         }
         catch(error){
@@ -36,7 +36,7 @@ class TicketServices{
                             quality_cod: this.quality_cod,
                             client_id:this.client_id
                         }
-            const saveTicket = await Ticket.create(ticket);
+            const saveTicket = await Calidad_Ticket.create(ticket);
             return saveTicket;
 
         }
@@ -53,7 +53,7 @@ class TicketServices{
                             client_id:this.client_id
                         }
             let u_ticket_cod = this.ticket_cod;
-            const updateTicket = await Ticket.update(ticket,{where:{ticket_cod:u_ticket_cod }});
+            const updateTicket = await Calidad_Ticket.update(ticket,{where:{ticket_cod:u_ticket_cod }});
             return updateTicket;
 
         }
@@ -65,7 +65,7 @@ class TicketServices{
     async deleteTicket(){
         try{
             let d_ticket_cod = this.ticket_cod;
-            const deleteTicket = await Ticket.destroy({where:{ticket_cod: d_ticket_cod}});
+            const deleteTicket = await Calidad_Ticket.destroy({where:{ticket_cod: d_ticket_cod}});
             return deleteTicket;
         }
         catch(error){

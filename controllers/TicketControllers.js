@@ -1,4 +1,4 @@
-import TicketServices from '../services/TickerServices.js';
+import TicketServices from '../services/TicketServices.js';
 import Joi from 'joi';
 
 const schemaGetTicket = Joi.object({

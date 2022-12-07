@@ -17,7 +17,8 @@ export async function Login(user){
             break;
 
     }
-    if(!validateEmail){return (boom.badData('Email and password are not valid '))    
+    console.log(validateEmail)
+    if(!validateEmail){return (boom.badData('Eeemail and password are not valid '))    
 }
 
     //validate if the password belong to the user                                                                                                         
