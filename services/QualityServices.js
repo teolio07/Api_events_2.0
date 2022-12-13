@@ -5,14 +5,15 @@ class QualityServices{
     constructor(quality_cod,quality_type,event_cod,price){
         this.quality_cod = quality_cod;
         this.quality_type = quality_type;
-        this.price = price
+        this.price = price;
+        this.event_cod = event_cod
     }
     async getQualities(){
         try{
-            const qualities = await Quality.findAll() 
+            const qualities = await Quality.findAll({include:["quality_event"]}) 
             return qualities; 
         }
-        catch(error){cosole.log('error getting qualities in services '+error.message)}
+        catch(error){console.log({message:'error getting qualities in services ',error: error})}
     }
     async getQuality(){
         try{
@@ -24,7 +25,7 @@ class QualityServices{
     }
     async saveQuality(){
         try{
-            const quality = {quality_cod:uuid(),quality_type:this.quality_type,price:this.price}
+            const quality = {quality_cod:uuid(),quality_type:this.quality_type,price:this.price,event_cod:this.event_cod}
             const saveQuality = await Quality.create(quality);
             return saveQuality
         }
@@ -35,7 +36,7 @@ class QualityServices{
     async updateQuality(){
         try{
             let u_quality_cod = this.quality_cod
-            const quality = {quality_cod:this.quality_cod,quality_type:this.quality_type,price:this.price}
+            const quality = {quality_cod:this.quality_cod,quality_type:this.quality_type,price:this.price,event_cod:this.event_cod}
             const updateQuality = await Quality.update(quality,{where:{quality_cod:u_quality_cod}});
             return updateQuality       
         }

@@ -14,7 +14,7 @@ constructor(event_cod,event_name,event_date,event_time,event_address,publication
     }
     async getEvents(){
         try{
-            const clients = await Event.findAll(); 
+            const clients = await Event.findAll({include:["event_promoter"]}); 
             return clients
         }
         catch(error){console.log('error getting events in services '+error.message)}

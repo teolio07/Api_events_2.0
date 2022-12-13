@@ -7,13 +7,16 @@ const schemaGetQuality = Joi.object({
 
 const schemaSaveQuality = Joi.object({
     quality_type: Joi.string().min(1).max(255).required(),
-    price: Joi.string().min(1).max(255).required(),
+    price: Joi.number().min(1).required(),
+    event_cod: Joi.string().min(1).max(255).required()
 })
 
 const schemaUpdateQuality = Joi.object({
     quality_cod: Joi.string().min(1).max(255).required(),
     quality_type: Joi.string().min(1).max(255).required(),
     price: Joi.string().min(1).max(255).required(),
+    event_cod: Joi.string().min(1).max(255).required()
+
 })
 
 const schemaDeleteQuality = Joi.object({
@@ -29,7 +32,7 @@ class QualityControllers {
             res.json(getQualities);
         }
         catch(error){
-            console.log('error getting qualities in controllers');
+            console.log({message:'error getting qualities in controllers',error: error});
         }
     }
     async getQuality(req,res){
@@ -60,10 +63,11 @@ class QualityControllers {
         }
 
         try{
-            const {quality_type,price} = req.body;
+            const {quality_type,price,event_cod} = req.body;
             const qualityServices = new QualityServices();
             qualityServices.quality_type = quality_type;
             qualityServices.price = price;
+            qualityServices.event_cod = event_cod;
             const saveQuality = await qualityServices.saveQuality();
             res.json(saveQuality);
 
@@ -85,6 +89,7 @@ class QualityControllers {
             qualityServices.quality_cod = quality_cod;
             qualityServices.quality_type = quality_type;
             qualityServices.price = price;
+            qualityServices.event_cod = event_cod;
             const updateQuality = await qualityServices.updateQuality();
             res.json(updateQuality);
 

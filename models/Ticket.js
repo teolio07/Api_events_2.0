@@ -14,11 +14,7 @@ export const Ticket = sequelize.define("tickets",{
     client_id: {
                 type: DataTypes.STRING,
                 allowNull: false 
-            },
-     event_cod: {
-        type: DataTypes.STRING,
-        allowNull: false 
-    },        
+            }
 
 }) 
 

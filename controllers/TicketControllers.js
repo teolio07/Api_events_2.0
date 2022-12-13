@@ -7,8 +7,7 @@ const schemaGetTicket = Joi.object({
 
 const schemaSaveTicket = Joi.object({
     quality_cod: Joi.string().min(1).max(255).required(),    
-    client_id: Joi.string().min(1).max(255).required(),    
-    event_cod: Joi.string().min(1).max(255).required(),    
+    client_id: Joi.number().min(1).required(),    
 
 })
 
@@ -16,7 +15,6 @@ const schemaUpdateTicket = Joi.object({
     ticket_cod: Joi.string().min(1).max(255).required(),    
     quality_cod: Joi.string().min(1).max(255).required(),    
     client_id: Joi.string().min(1).max(255).required(),    
-    event_cod: Joi.string().min(1).max(255).required(),    
 
 })
 
@@ -65,10 +63,8 @@ class TicketControllers{
 
 
         try{
-            const {price,event_cod,quality_cod,client_id} = req.body; 
+            const {quality_cod,client_id} = req.body; 
             const ticketServices = new TicketServices();
-            ticketServices.price = price;
-            ticketServices.event_cod = event_cod;
             ticketServices.quality_cod = quality_cod;
             ticketServices.client_id = client_id;
             const saveTicket = await ticketServices.saveTicket();
@@ -87,11 +83,9 @@ class TicketControllers{
         }
 
         try{
-            const {ticket_cod,price,event_cod,quality_cod,client_id} = req.body; 
+            const {ticket_cod,quality_cod,client_id} = req.body; 
             const ticketServices = new TicketServices();
             ticketServices.ticket_cod = ticket_cod;
-            ticketServices.price = price;
-            ticketServices.event_cod = event_cod;
             ticketServices.quality_cod = quality_cod;
             ticketServices.client_id = client_id;
             const updateTicket = await ticketServices.updateTicket();
